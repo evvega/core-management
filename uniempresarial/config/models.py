@@ -1,5 +1,5 @@
 from django.db import models
-from common.models import BaseModel
+from common.models import BaseModel, User
 from common.models import StateModel
 
 
@@ -80,7 +80,7 @@ class RolConfig(BaseModel):
     name = models.CharField(max_length=200)
     description = models.TextField(max_length=500)
     status = models.ForeignKey(StateModel, related_name='status', on_delete=models.CASCADE)
-    modules = models.ManyToMany(ModuleConfig, related_name='modules', on_delete=models.CASCADE)
+    modules = models.ManyToManyField(ModuleConfig, related_name='modules')
 
     class Meta:
         ordering = ['-id']
