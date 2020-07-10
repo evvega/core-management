@@ -2,6 +2,13 @@
 
 from __future__ import unicode_literals
 
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import viewsets
+
+from common.models import User
+from rest_framework.decorators import action
+from rest_framework.filters import SearchFilter, OrderingFilter
+
 from .models import *
 from .serializers import *
 from .filters import *
@@ -13,7 +20,6 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    filter_class = UserFilter
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter,)
     ordering_fields = '__all__'
 

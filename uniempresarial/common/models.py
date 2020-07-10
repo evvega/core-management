@@ -10,17 +10,8 @@ User = get_user_model()
 class BaseModel(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True, null=True, blank=True)
-    created_by = models.ForeignKey(User, related_name='+', null=True)
-    modified_by = models.ForeignKey(User, related_name='+', null=True)
-
-    class Meta:
-        abstract = True
-
-
-class StateModel(BaseModel):
-    external_id = models.CharField(max_length=15, unique=True, null=True)
-    name = models.CharField(max_length=200)
-    description = models.TextField(max_length=500)
+    created_by = models.ForeignKey(User, related_name='+', null=True,  on_delete=models.CASCADE)
+    modified_by = models.ForeignKey(User, related_name='+', null=True,  on_delete=models.CASCADE)
 
     class Meta:
         abstract = True

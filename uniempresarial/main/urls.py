@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from common.views import health_check
 from django.conf import settings
 from django.conf.urls import include, url
@@ -23,7 +24,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^auth/', include('djoser.urls.base')),
     url(r'^auth/', include('djoser.urls.authtoken')),
-    url(r'^health_check/', health_check),
+    url(r'^health_check/', health_check)
+
 ]
 
 # Load core enabled modules dynamic

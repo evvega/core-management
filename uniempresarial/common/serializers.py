@@ -20,7 +20,6 @@ class BaseSerializer(serializers.ModelSerializer):
 
     def __init__(self, *args, **kwargs):
         super(BaseSerializer, self).__init__(*args, **kwargs)
-        self.add_timestamp_fields()
 
     def create(self, validated_data):
         validated_data['created_by'] = self.context['request'].user
@@ -30,9 +29,3 @@ class BaseSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         validated_data['modified_by'] = self.context['request'].user
         return super(BaseSerializer, self).update(instance, validated_data)
-
-    def add_timestamp_fields(self):
-        for field in list(self.fields):
-            if type(self.fields[field]) == serializers.DateTimeField or type(self.fields[field]) == serializers.DateField:
-                field_name = "{}_timestamp".format(field)
-                self.fields[field_name] = TimestampField(source=self.fields[field].source)

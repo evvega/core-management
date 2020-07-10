@@ -3,9 +3,8 @@
 from __future__ import unicode_literals
 
 import django_filters
-from common.filters import *
 from common.models import *
-from config.models import *
+from .models import *
 
 
 class FacultyFilter(django_filters.FilterSet):

@@ -8,12 +8,10 @@ from common.serializers import *
 
 
 class UserSerializer(BaseSerializer, serializers.ModelSerializer):
-    configs = UserConfigSerializer()
-
     class Meta:
         model = User
         fields = ['id', 'last_login', 'username', 'first_name', 'last_name',
-                  'email', 'is_active', 'groups', 'configs']
+                  'email', 'is_active', 'groups']
 
 
 class FacultySerializer(BaseSerializer):
@@ -63,8 +61,8 @@ class RolConfigSerializer(BaseSerializer):
     modules = ModuleConfigSerializer(many=True, read_only=True)
 
     class Meta:
-        model = ModuleConfig
-        fields = ('id', 'external_id', 'name', 'description', 'status')
+        model = RolConfig
+        fields = ('id', 'external_id', 'name', 'description', 'status', 'modules')
 
 
 class RolUserSerializer(BaseSerializer):

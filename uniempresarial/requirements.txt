@@ -1,8 +1,8 @@
 django-rest-swagger==2.2.0
 djangorestframework==3.9.2
-Django==1.11.17
+Django==1.11.23
 django-filter==2.0.0
 djoser==1.1.5
-PyMySQL==0.9.3
-mysqlclient==1.4.6
 django-cors-headers==2.5.2
+pillow==6.2.1
+psycopg2==2.8.1

@@ -1,6 +1,7 @@
-from rest_framework.routers import DefaultRouter
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
-from config.api_views import UserViewSet
+from .api_views import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
